@@ -12,5 +12,7 @@
   "devDependencies": {
     "electron": "^9.2.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "node-notifier": "^7.0.2"
+  }
 }
