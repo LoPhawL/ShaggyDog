@@ -32,7 +32,9 @@ UpdateCommandListInView = function()
     let commandList = '';
     for(const command in configuredCommands)
     {
-        commandList += `<li class="list-group-item" style="cursor:pointer;" onclick="ExecuteCommand(this)">${command}</li>`
+        commandList += 
+        `<li class="list-group-item" style="cursor:pointer;" onclick="ExecuteCommand(this)">${command}
+        <i class="float-right fa-spin fa fa-spinner d-none" id="${command}_spinner"></i></li>`
     }
     if(commandList === '')
     {
@@ -57,13 +59,16 @@ WriteCommandToFile = function()
 
 ExecuteCommand = function(element)
 {
+    document.getElementById(element.innerText+'_spinner').classList.remove('d-none');
     let commandName = element.innerText;
     const command = configuredCommands[commandName];
     if(!command){return;}
     // console.log(command);
     // return;
+    setTimeout(() => {document.getElementById(element.innerText+'_spinner').classList.add('d-none');}, 7000)
     const { exec } = require('child_process');
     exec(command, (err, stdout, stderr) => {
+        document.getElementById(element.innerText+'_spinner').classList.add('d-none');
         if (err) {
             notifier.notify ({
                 title: 'Error',
