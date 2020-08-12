@@ -1,10 +1,9 @@
 const fs = require('fs');
-const configs = JSON.parse(fs.readFileSync('./tasks.json'));
-
-const configuredCommands = configs.commands
-
 const notifier = require('node-notifier')
 const path = require('path');
+
+const configs = JSON.parse(fs.readFileSync(path.join(__dirname,'/Data/tasks.json'))); //readfile
+const configuredCommands = configs.commands
 
 document.getElementById('addCommand_add_btn').onclick = (event) => {
 
@@ -45,7 +44,7 @@ UpdateCommandListInView = function()
 
 WriteCommandToFile = function()
 {
-    fs.writeFile('./tasks.json', JSON.stringify(configs), ()=>{
+    fs.writeFile(path.join(__dirname,'/Data/tasks.json'), JSON.stringify(configs), ()=>{//write file
         
         notifier.notify ({
             title: 'Added command',
@@ -89,3 +88,4 @@ ExecuteCommand = function(element)
 }
 
 this.UpdateCommandListInView();
+

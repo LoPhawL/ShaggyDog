@@ -1,1 +1,9 @@
+Data/tasks.json
 node_modules
+ShaggyDog-win32-x64
+ShaggyDog-linux-x64
+ShaggyDog-linux-armv7l
+ShaggyDog-linux-arm64
+ShaggyDog-win32-ia32
+ShaggyDog-win32-arm64
+ShaggyDog-linux-ia32
